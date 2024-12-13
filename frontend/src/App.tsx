@@ -1,5 +1,9 @@
 function App() {
-    return <>DBMS</>;
+    return (
+        <>
+            <h3>Home</h3>
+        </>
+    );
 }
 
 export default App;
