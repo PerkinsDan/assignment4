@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-
-type Activity = {
-    name: string;
-    date: string;
-    instructor: string;
-    boats: string[];
-};
+import SingleActivity from "../components/SingleActivity";
+import type { Activity } from "../../types";
 
 const Activities = () => {
     const [activities, setActivities] = useState([]);
@@ -20,12 +15,7 @@ const Activities = () => {
         <div>
             <h3 className="text-xl">Activities</h3>
             {activities.map((activity: Activity) => (
-                <div>
-                    <p>Name: {activity.name}</p>
-                    <p>Date: {activity.date}</p>
-                    <p>Instructor: {activity.instructor}</p>
-                    <p>Boats: {activity.boats.join(", ")}</p>
-                </div>
+                <SingleActivity key={activity._id} {...activity} />
             ))}
         </div>
     );

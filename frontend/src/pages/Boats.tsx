@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-
-type Boat = {
-    name: string;
-    model: string;
-    manufacturer: string;
-    capacity: number;
-};
+import SingleBoat from "../components/SingleBoat";
+import { Boat } from "../../types";
 
 const Boats = () => {
     const [boats, setBoats] = useState<Boat[]>([]);
@@ -20,12 +15,7 @@ const Boats = () => {
         <div>
             <h3 className="text-xl">Boats</h3>
             {boats.map((boat: Boat) => (
-                <div>
-                    <p>Name: {boat.name}</p>
-                    <p>Model: {boat.model}</p>
-                    <p>Manufacturer: {boat.manufacturer}</p>
-                    <p>Capacity: {boat.capacity}</p>
-                </div>
+                <SingleBoat key={boat._id} {...boat} />
             ))}
         </div>
     );

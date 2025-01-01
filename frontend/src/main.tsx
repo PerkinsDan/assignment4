@@ -1,23 +1,34 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import "./index.css";
 import App from "./App.tsx";
 import Navbar from "./components/Navbar.tsx";
 import Activities from "./pages/Activities.tsx";
+import Activity from "./pages/Activity.tsx";
 import Boats from "./pages/Boats.tsx";
 import Instructors from "./pages/Instructors.tsx";
+import ReactDOM from "react-dom/client";
+import Boat from "./pages/Boat.tsx";
+import Instructor from "./pages/Instructor.tsx";
 
-createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-        <BrowserRouter>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="/activities" element={<Activities />} />
-                <Route path="/boats" element={<Boats />} />
-                <Route path="/instructors" element={<Instructors />} />
-            </Routes>
-        </BrowserRouter>
-    </StrictMode>
+const root = document.getElementById("root")!;
+
+ReactDOM.createRoot(root).render(
+    <BrowserRouter>
+        <Navbar />
+        <Routes>
+            <Route index element={<App />} />
+            <Route path="activities">
+                <Route index element={<Activities />} />
+                <Route path=":id" element={<Activity />} />
+            </Route>
+            <Route path="boats">
+                <Route index element={<Boats />} />
+                <Route path=":id" element={<Boat />} />
+            </Route>
+            <Route path="instructors">
+                <Route index element={<Instructors />} />
+                <Route path=":id" element={<Instructor />} />
+            </Route>
+        </Routes>
+    </BrowserRouter>
 );

@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
 import type { Instructor } from "../../types";
 import SingleInstructor from "../components/SingleInstructor";
+import { useParams } from "react-router";
 
-const Instructors = () => {
-    const [instructors, setInstructors] = useState<Instructor[]>([]);
+const Instructor = () => {
+    const params = useParams();
+    const [instructor, setInstructor] = useState<Instructor>();
 
     useEffect(() => {
-        fetch("/api/instructors")
+        fetch("/api/instructors/" + params.id)
             .then((response) => response.json())
-            .then((data) => setInstructors(data));
-    }, []);
-
-    console.log(instructors);
+            .then((data) => setInstructor(data));
+    }, [params]);
 
     return (
         <div>
             <h3 className="text-xl">Instructors</h3>
-            {instructors.map((instructor: Instructor) => (
+            {instructor && (
                 <SingleInstructor key={instructor._id} {...instructor} />
-            ))}
+            )}
         </div>
     );
 };
 
-export default Instructors;
+export default Instructor;
