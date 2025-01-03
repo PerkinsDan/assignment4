@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Boat } from "../../types";
 import SingleBoat from "../components/SingleBoat";
 import { useParams } from "react-router";
+import SingleEdits from "../components/SingleEdits";
 
 const Boat = () => {
     const params = useParams();
@@ -16,6 +17,7 @@ const Boat = () => {
     return (
         <div>
             <h3 className="text-xl">Boats</h3>
+            <SingleEdits activityClassAndId={`boats/${params.id}`} />
             {boat && <SingleBoat key={boat._id} {...boat} />}
         </div>
     );

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import SingleActivity from "../components/SingleActivity";
 import type { Activity } from "../../types";
+import SingleEdits from "../components/SingleEdits";
 
 const Activity = () => {
     const params = useParams();
@@ -17,6 +18,7 @@ const Activity = () => {
     return (
         <div>
             <h3 className="text-xl">Activity</h3>
+            <SingleEdits activityClassAndId={`activities/${params.id}`} />
             {activity && <SingleActivity {...activity} />}
         </div>
     );

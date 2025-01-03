@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Instructor } from "../../types";
 import SingleInstructor from "../components/SingleInstructor";
 import { useParams } from "react-router";
+import SingleEdits from "../components/SingleEdits";
 
 const Instructor = () => {
     const params = useParams();
@@ -16,6 +17,7 @@ const Instructor = () => {
     return (
         <div>
             <h3 className="text-xl">Instructors</h3>
+            <SingleEdits activityClassAndId={`instructors/${params.id}`} />
             {instructor && (
                 <SingleInstructor key={instructor._id} {...instructor} />
             )}

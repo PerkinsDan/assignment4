@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SingleBoat from "../components/SingleBoat";
 import { Boat } from "../../types";
+import MassEdits from "../components/MassEdits";
 
 const Boats = () => {
     const [boats, setBoats] = useState<Boat[]>([]);
@@ -14,6 +15,7 @@ const Boats = () => {
     return (
         <div>
             <h3 className="text-xl">Boats</h3>
+            <MassEdits activityClass="boats" />
             {boats.map((boat: Boat) => (
                 <SingleBoat key={boat._id} {...boat} />
             ))}

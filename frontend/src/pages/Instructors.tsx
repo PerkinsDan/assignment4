@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Instructor } from "../../types";
 import SingleInstructor from "../components/SingleInstructor";
+import MassEdits from "../components/MassEdits";
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState<Instructor[]>([]);
@@ -11,11 +12,10 @@ const Instructors = () => {
             .then((data) => setInstructors(data));
     }, []);
 
-    console.log(instructors);
-
     return (
         <div>
             <h3 className="text-xl">Instructors</h3>
+            <MassEdits activityClass="instructors" />
             {instructors.map((instructor: Instructor) => (
                 <SingleInstructor key={instructor._id} {...instructor} />
             ))}

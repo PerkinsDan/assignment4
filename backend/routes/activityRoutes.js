@@ -39,4 +39,24 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+router.delete("/", async (req, res) => {
+    try {
+        const activities = await activityModel.deleteMany();
+        res.status(200).json(activities);
+    } catch (error) {
+        res.status(400).json({ message: error });
+    }
+});
+
+router.delete("/:id", async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const activities = await activityModel.findByIdAndDelete(id);
+        res.status(200).json(activities);
+    } catch (error) {
+        res.status(400).json({ message: error });
+    }
+});
+
 module.exports = router;

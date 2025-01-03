@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SingleActivity from "../components/SingleActivity";
 import type { Activity } from "../../types";
+import MassEdits from "../components/MassEdits";
 
 const Activities = () => {
     const [activities, setActivities] = useState([]);
@@ -14,6 +15,7 @@ const Activities = () => {
     return (
         <div>
             <h3 className="text-xl">Activities</h3>
+            <MassEdits activityClass="activities" />
             {activities.map((activity: Activity) => (
                 <SingleActivity key={activity._id} {...activity} />
             ))}
