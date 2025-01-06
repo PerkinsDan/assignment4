@@ -43,7 +43,7 @@ const BoatEdit = () => {
         });
 
         if (response.status === 200) {
-            window.location.href = "/boats";
+            window.location.href = `/boats/${params.id}`;
             return;
         }
 

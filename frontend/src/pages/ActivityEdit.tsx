@@ -66,7 +66,7 @@ const ActivityEdit = () => {
         });
 
         if (response.status === 200) {
-            window.location.href = "/activities";
+            window.location.href = `/activities/${params.id}`;
             return;
         }
 
