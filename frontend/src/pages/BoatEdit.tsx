@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-const BoatCreate = () => {
+const BoatEdit = () => {
     const params = useParams();
 
     const [name, setName] = useState("");
@@ -102,4 +102,4 @@ const BoatCreate = () => {
     );
 };
 
-export default BoatCreate;
+export default BoatEdit;
