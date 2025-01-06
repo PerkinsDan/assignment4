@@ -1,3 +1,4 @@
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import "./index.css";
 import App from "./App.tsx";
@@ -6,13 +7,14 @@ import Activities from "./pages/Activities.tsx";
 import Activity from "./pages/Activity.tsx";
 import Boats from "./pages/Boats.tsx";
 import Instructors from "./pages/Instructors.tsx";
-import ReactDOM from "react-dom/client";
 import Boat from "./pages/Boat.tsx";
 import Instructor from "./pages/Instructor.tsx";
 import ActivityEdit from "./pages/ActivityEdit.tsx";
 import ActivityCreate from "./pages/ActivityCreate.tsx";
 import BoatEdit from "./pages/BoatEdit.tsx";
 import BoatCreate from "./pages/BoatCreate.tsx";
+import InstructorEdit from "./pages/InstructorEdit.tsx";
+import InstructorCreate from "./pages/InstructorCreate.tsx";
 
 const root = document.getElementById("root")!;
 
@@ -36,6 +38,8 @@ ReactDOM.createRoot(root).render(
             <Route path="instructors">
                 <Route index element={<Instructors />} />
                 <Route path=":id" element={<Instructor />} />
+                <Route path=":id/edit" element={<InstructorEdit />} />
+                <Route path="create" element={<InstructorCreate />} />
             </Route>
         </Routes>
     </BrowserRouter>
