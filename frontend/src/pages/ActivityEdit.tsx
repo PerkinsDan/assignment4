@@ -3,13 +3,18 @@ import { Boat, Instructor } from "../../types";
 import Select from "react-select";
 import { useParams } from "react-router";
 
+type SelectOption = {
+    value: string;
+    label: string;
+};
+
 const ActivityEdit = () => {
     const params = useParams();
 
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [instructor, setInstructor] = useState("");
-    const [boats, setBoats] = useState([]);
+    const [boats, setBoats] = useState<SelectOption[]>([]);
     const [error, setError] = useState("");
 
     const [boatsList, setBoatsList] = useState<Boat[]>([]);
@@ -39,12 +44,14 @@ const ActivityEdit = () => {
         });
     }, [params.id]);
 
-    const instructorsOptions = instructorsList.map((instructor) => ({
-        value: instructor._id,
-        label: instructor.name,
-    }));
+    const instructorsOptions: SelectOption[] = instructorsList.map(
+        (instructor) => ({
+            value: instructor._id,
+            label: instructor.name,
+        })
+    );
 
-    const boatsOptions = boatsList.map((boat) => ({
+    const boatsOptions: SelectOption[] = boatsList.map((boat) => ({
         value: boat._id,
         label: boat.name,
     }));
@@ -74,11 +81,11 @@ const ActivityEdit = () => {
         setError(error.message);
     };
 
-    const handleBoatsChange = (boats) => {
+    const handleBoatsChange = (boats: SelectOption[]) => {
         setBoats(boats);
     };
 
-    const handleInstructorChange = (instructor) => {
+    const handleInstructorChange = (instructor: SelectOption) => {
         setInstructor(instructor.value);
     };
 
