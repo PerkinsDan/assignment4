@@ -9,6 +9,8 @@ import Instructors from "./pages/Instructors.tsx";
 import ReactDOM from "react-dom/client";
 import Boat from "./pages/Boat.tsx";
 import Instructor from "./pages/Instructor.tsx";
+import ActivityEdit from "./pages/ActivityEdit.tsx";
+import ActivityCreate from "./pages/ActivityCreate.tsx";
 
 const root = document.getElementById("root")!;
 
@@ -20,6 +22,8 @@ ReactDOM.createRoot(root).render(
             <Route path="activities">
                 <Route index element={<Activities />} />
                 <Route path=":id" element={<Activity />} />
+                <Route path=":id/edit" element={<ActivityEdit />} />
+                <Route path="create" element={<ActivityCreate />} />
             </Route>
             <Route path="boats">
                 <Route index element={<Boats />} />

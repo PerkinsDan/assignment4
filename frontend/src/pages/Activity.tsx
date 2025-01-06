@@ -18,7 +18,7 @@ const Activity = () => {
     return (
         <div>
             <h3 className="text-xl">Activity</h3>
-            <SingleEdits activityClassAndId={`activities/${params.id}`} />
+            <SingleEdits category="activities" id={params.id!} />
             {activity && <SingleActivity {...activity} />}
         </div>
     );
