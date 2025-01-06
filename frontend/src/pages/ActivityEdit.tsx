@@ -37,7 +37,7 @@ const ActivityEdit = () => {
             setBoatsList(boatsList);
             setInstructorsList(instructorsList);
         });
-    }, []);
+    }, [params.id]);
 
     const instructorsOptions = instructorsList.map((instructor) => ({
         value: instructor._id,
@@ -49,10 +49,7 @@ const ActivityEdit = () => {
         label: boat.name,
     }));
 
-    console.log();
-
     const createActivity = async (e: { preventDefault: () => void }) => {
-        console.log(boats);
         e.preventDefault();
 
         const response = await fetch(`/api/activities/${params.id}`, {

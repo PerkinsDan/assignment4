@@ -40,7 +40,6 @@ const ActivityCreate = () => {
     }));
 
     const createActivity = async (e: { preventDefault: () => void }) => {
-        console.log(boats);
         e.preventDefault();
 
         const response = await fetch("/api/activities", {

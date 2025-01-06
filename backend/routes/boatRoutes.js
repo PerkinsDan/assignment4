@@ -19,6 +19,24 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.put("/:id", async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const updatedBoat = await boatModel
+            .findByIdAndUpdate(id, {
+                name: req.body.name,
+                model: req.body.model,
+                manufacturer: req.body.manufacturer,
+                capacity: req.body.capacity,
+            })
+            .exec();
+        res.status(200).json(updatedBoat);
+    } catch (error) {
+        res.status(400).json({ message: error });
+    }
+});
+
 router.get("/", async (req, res) => {
     try {
         const boats = await boatModel.find();
