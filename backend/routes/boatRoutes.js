@@ -1,15 +1,11 @@
 const express = require("express");
-const boatModel = require("../models/boatModel");
+const Boat = require("../models/boatModel");
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-    const boat = new boatModel({
-        name: req.body.name,
-        model: req.body.model,
-        manufacturer: req.body.manufacturer,
-        capacity: req.body.capacity,
-    });
+    const { name, model, manufacturer, capacity } = req.body;
+    const boat = new Boat(name, model, manufacturer, capacity);
 
     try {
         const savedBoat = await boat.save();
@@ -21,16 +17,16 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
     const id = req.params.id;
+    const { name, model, manufacturer, capacity } = req.body;
 
     try {
-        const updatedBoat = await boatModel
-            .findByIdAndUpdate(id, {
-                name: req.body.name,
-                model: req.body.model,
-                manufacturer: req.body.manufacturer,
-                capacity: req.body.capacity,
-            })
-            .exec();
+        const updatedBoat = await Boat.updateById(
+            id,
+            name,
+            model,
+            manufacturer,
+            capacity
+        );
         res.status(200).json(updatedBoat);
     } catch (error) {
         res.status(400).json({ message: error });
@@ -39,7 +35,7 @@ router.put("/:id", async (req, res) => {
 
 router.get("/", async (req, res) => {
     try {
-        const boats = await boatModel.find();
+        const boats = await Boat.findAll();
         res.status(200).json(boats);
     } catch (error) {
         res.status(400).json({ message: error });
@@ -50,7 +46,7 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
 
     try {
-        const boats = await boatModel.findById(id);
+        const boats = await Boat.findById(id);
         res.status(200).json(boats);
     } catch (error) {
         res.status(400).json({ message: error });
@@ -59,7 +55,7 @@ router.get("/:id", async (req, res) => {
 
 router.delete("/", async (req, res) => {
     try {
-        const boats = await boatModel.deleteMany();
+        const boats = await Boat.deleteMany();
         res.status(200).json(boats);
     } catch (error) {
         res.status(400).json({ message: error });
@@ -70,7 +66,7 @@ router.delete("/:id", async (req, res) => {
     const id = req.params.id;
 
     try {
-        const boats = await boatModel.findByIdAndDelete(id);
+        const boats = await Boat.deleteOne(id);
         res.status(200).json(boats);
     } catch (error) {
         res.status(400).json({ message: error });
