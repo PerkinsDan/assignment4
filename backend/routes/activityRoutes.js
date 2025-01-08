@@ -38,7 +38,8 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-    const { id, name, date, instructor, boats } = req.body;
+    const { id } = req.params;
+    const { name, date, instructor, boats } = req.body;
 
     if (name === "" || date === "" || instructor === "" || boats === "") {
         return res.status(400).json({ message: "All fields are required" });

@@ -61,11 +61,12 @@ class Activity {
     }
 
     static async updateById(id, name, date, instructor, boats) {
-        return await activityModel.findByIdAndUpdate(
-            id,
-            { name, date, instructor, boats },
-            { new: true }
-        );
+        return await activityModel.findByIdAndUpdate(id, {
+            name,
+            date,
+            instructor,
+            boats,
+        });
     }
 }
 
