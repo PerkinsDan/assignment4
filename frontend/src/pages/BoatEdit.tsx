@@ -94,7 +94,7 @@ const BoatEdit = () => {
                     className="p-3 text-white bg-blue-600 rounded"
                     onClick={createBoat}
                 >
-                    Create
+                    Edit
                 </button>
                 {error && <p>{error}</p>}
             </form>

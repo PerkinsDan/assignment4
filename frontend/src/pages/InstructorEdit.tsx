@@ -74,7 +74,7 @@ const InstructorEdit = () => {
                     className="p-3 text-white bg-blue-600 rounded"
                     onClick={createInstructor}
                 >
-                    Create
+                    Edit
                 </button>
                 {error && <p>{error}</p>}
             </form>

@@ -126,7 +126,7 @@ const ActivityEdit = () => {
                     className="p-3 text-white bg-blue-600 rounded"
                     onClick={createActivity}
                 >
-                    Create
+                    Edit
                 </button>
                 {error && <p>{error}</p>}
             </form>
