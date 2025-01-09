@@ -1,5 +1,5 @@
 const express = require("express");
-const Boat = require("../models/boatModel");
+const Boat = require("../classes/boat");
 
 const router = express.Router();
 

@@ -1,13 +1,12 @@
 const express = require("express");
-const instructorModel = require("../models/instructorModel");
-const Instructor = require("../models/instructorModel");
+const Instructor = require("../classes/instructor");
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
     const { name, yearsExperience } = req.body;
 
-    const instructor = new instructorModel(name, yearsExperience);
+    const instructor = new Instructor(name, yearsExperience);
 
     try {
         const savedInstructor = await instructor.save();

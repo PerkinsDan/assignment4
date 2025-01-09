@@ -1,7 +1,7 @@
 const express = require("express");
-const boatModel = require("../models/boatModel");
-const instructorModel = require("../models/instructorModel");
-const Activity = require("../models/activityModel");
+const Activity = require("../classes/activity");
+const Instructor = require("../classes/instructor");
+const Boat = require("../classes/boat");
 
 const router = express.Router();
 
@@ -13,14 +13,14 @@ router.post("/", async (req, res) => {
     }
 
     try {
-        await instructorModel.findById(instructor);
+        await Instructor.findById(instructor);
     } catch (error) {
         return res.status(400).json({ message: "Instructor not found" });
     }
 
     for (let i = 0; i < boats.length; i++) {
         try {
-            await boatModel.findById(boats[i]);
+            await Boat.findById(boats[i]);
         } catch (error) {
             return res.status(400).json({ message: "Boat/s not found" });
         }
