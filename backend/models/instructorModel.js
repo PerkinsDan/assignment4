@@ -4,7 +4,6 @@ const instructorSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
     },
     yearsExperience: {
         type: Number,

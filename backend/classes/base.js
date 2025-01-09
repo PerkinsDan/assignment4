@@ -36,7 +36,7 @@ class Base {
     }
 
     static async updateById(id, model) {
-        return await this.model.findByIdAndUpdate(id, model);
+        return await this.model.findByIdAndUpdate(id, model, { new: true });
     }
 }
 

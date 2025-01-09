@@ -19,8 +19,12 @@ const database = mongoose.connection;
 database.on("error", (error) => console.error(error));
 database.once("open", () => console.log("Connected to database"));
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== "test") {
+    app.listen(PORT, () => {
+        console.log(`Server started on port ${PORT}`);
+    });
+}
 
 app.use("/api", routes);
+
+module.exports = app;

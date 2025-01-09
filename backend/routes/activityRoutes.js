@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 
     try {
         const savedActivity = await activity.save();
-        res.status(200).json(savedActivity);
+        res.status(201).json(savedActivity);
     } catch (error) {
         console.log(error);
         res.status(400).json({ message: "Error creating activity" });
