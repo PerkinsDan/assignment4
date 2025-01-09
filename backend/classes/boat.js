@@ -1,7 +1,9 @@
 const boatModel = require("../models/boatModel");
+const Base = require("./base");
 
-class Boat {
+class Boat extends Base {
     constructor(name, model, manufacturer, capacity) {
+        super();
         this.name = name;
         this.model = model;
         this.manufacturer = manufacturer;
@@ -9,34 +11,12 @@ class Boat {
     }
 
     async save() {
-        const boat = new boatModel({
-            name: this.name,
-            model: this.model,
-            manufacturer: this.manufacturer,
-            capacity: this.capacity,
-        });
-
-        return await boat.save();
-    }
-
-    static async findAll() {
-        return await boatModel.find();
-    }
-
-    static async findById(id) {
-        return await boatModel.findById(id);
-    }
-
-    static async deleteMany() {
-        return await boatModel.deleteMany();
-    }
-
-    static async deleteOne(id) {
-        return await boatModel.findByIdAndDelete(id);
+        const { name, model, manufacturer, capacity } = this;
+        return await super.save({ name, model, manufacturer, capacity });
     }
 
     static async updateById(id, name, model, manufacturer, capacity) {
-        return await boatModel.findByIdAndUpdate(id, {
+        return await super.updateById(id, {
             name,
             model,
             manufacturer,
@@ -44,5 +24,7 @@ class Boat {
         });
     }
 }
+
+Boat.setModel(boatModel);
 
 module.exports = Boat;

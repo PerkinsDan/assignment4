@@ -46,14 +46,14 @@ router.put("/:id", async (req, res) => {
     }
 
     try {
-        await instructorModel.findById(instructor);
+        await Instructor.findById(instructor);
     } catch (error) {
         return res.status(400).json({ message: "Instructor not found" });
     }
 
     for (let i = 0; i < boats.length; i++) {
         try {
-            await boatModel.findById(boats[i]);
+            await Boat.findById(boats[i]);
         } catch (error) {
             console.log(error);
             return res.status(400).json({ message: "Boat/s not found" });

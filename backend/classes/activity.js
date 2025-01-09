@@ -1,7 +1,9 @@
 const activityModel = require("../models/activityModel");
+const Base = require("./base");
 
-class Activity {
+class Activity extends Base {
     constructor(name, date, instructor, boats) {
+        super();
         this.name = name;
         this.date = date;
         this.instructor = instructor;
@@ -10,35 +12,11 @@ class Activity {
 
     async save() {
         const { name, date, instructor, boats } = this;
-
-        const activity = new activityModel({
-            name,
-            date,
-            instructor,
-            boats,
-        });
-
-        return await activity.save();
-    }
-
-    static async findById(id) {
-        return await activityModel.findById(id);
-    }
-
-    static async findAll() {
-        return await activityModel.find();
-    }
-
-    static async deleteAll() {
-        return await activityModel.deleteMany();
-    }
-
-    static async deleteById(id) {
-        return await activityModel.findByIdAndDelete(id);
+        return await super.save({ name, date, instructor, boats });
     }
 
     static async updateById(id, name, date, instructor, boats) {
-        return await activityModel.findByIdAndUpdate(id, {
+        return await super.updateById(id, {
             name,
             date,
             instructor,
@@ -46,5 +24,7 @@ class Activity {
         });
     }
 }
+
+Activity.setModel(activityModel);
 
 module.exports = Activity;
