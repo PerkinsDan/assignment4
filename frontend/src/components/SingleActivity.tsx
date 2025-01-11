@@ -4,12 +4,6 @@ import type { Activity } from "../../types";
 const SingleActivity = (activity: Activity) => {
     const { _id, name, date, instructor, boats } = activity;
 
-    const valid = _id && name && date && instructor && boats;
-
-    if (!valid) {
-        return <p>Activity not found with ID provided</p>;
-    }
-
     return (
         <div className="my-3">
             <p>

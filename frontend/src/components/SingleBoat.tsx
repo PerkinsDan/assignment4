@@ -4,12 +4,6 @@ import { Boat } from "../../types";
 const SingleBoat = (Boat: Boat) => {
     const { _id, name, model, manufacturer, capacity } = Boat;
 
-    const valid = _id && name && model && manufacturer && capacity;
-
-    if (!valid) {
-        return <p>Boat not found with ID provided</p>;
-    }
-
     return (
         <div className="my-3">
             <p>

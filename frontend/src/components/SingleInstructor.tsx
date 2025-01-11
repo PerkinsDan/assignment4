@@ -4,12 +4,6 @@ import { Instructor } from "../../types";
 const SingleInstructor = (instructor: Instructor) => {
     const { _id, name, yearsExperience } = instructor;
 
-    const valid = _id && name && yearsExperience;
-
-    if (!valid) {
-        return <p>Instructor not found with ID provided</p>;
-    }
-
     return (
         <div className="my-3">
             <p>
