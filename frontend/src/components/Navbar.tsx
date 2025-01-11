@@ -7,7 +7,7 @@ function App() {
 
     return (
         <>
-            <nav className="flex items-center">
+            <nav className="flex items-center my-4">
                 <a className="text-3xl" href="/">
                     DBMS
                 </a>

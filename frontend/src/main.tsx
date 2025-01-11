@@ -20,27 +20,29 @@ const root = document.getElementById("root")!;
 
 ReactDOM.createRoot(root).render(
     <BrowserRouter>
-        <Navbar />
-        <Routes>
-            <Route index element={<App />} />
-            <Route path="activities">
-                <Route index element={<Activities />} />
-                <Route path=":id" element={<Activity />} />
-                <Route path=":id/edit" element={<ActivityEdit />} />
-                <Route path="create" element={<ActivityCreate />} />
-            </Route>
-            <Route path="boats">
-                <Route index element={<Boats />} />
-                <Route path=":id" element={<Boat />} />
-                <Route path=":id/edit" element={<BoatEdit />} />
-                <Route path="create" element={<BoatCreate />} />
-            </Route>
-            <Route path="instructors">
-                <Route index element={<Instructors />} />
-                <Route path=":id" element={<Instructor />} />
-                <Route path=":id/edit" element={<InstructorEdit />} />
-                <Route path="create" element={<InstructorCreate />} />
-            </Route>
-        </Routes>
+        <div className="container mx-auto">
+            <Navbar />
+            <Routes>
+                <Route index element={<App />} />
+                <Route path="activities">
+                    <Route index element={<Activities />} />
+                    <Route path=":id" element={<Activity />} />
+                    <Route path=":id/edit" element={<ActivityEdit />} />
+                    <Route path="create" element={<ActivityCreate />} />
+                </Route>
+                <Route path="boats">
+                    <Route index element={<Boats />} />
+                    <Route path=":id" element={<Boat />} />
+                    <Route path=":id/edit" element={<BoatEdit />} />
+                    <Route path="create" element={<BoatCreate />} />
+                </Route>
+                <Route path="instructors">
+                    <Route index element={<Instructors />} />
+                    <Route path=":id" element={<Instructor />} />
+                    <Route path=":id/edit" element={<InstructorEdit />} />
+                    <Route path="create" element={<InstructorCreate />} />
+                </Route>
+            </Routes>
+        </div>
     </BrowserRouter>
 );

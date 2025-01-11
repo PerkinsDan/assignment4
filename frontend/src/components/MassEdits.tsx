@@ -6,12 +6,12 @@ const MassEdits = ({ activityClass }: { activityClass: string }) => {
     };
 
     return (
-        <div>
-            <button className="p-2 border" onClick={() => handleDeleteAll()}>
-                Delete All
-            </button>
-            <a className="p-2 border" href={`${activityClass}/create`}>
+        <div className="flex gap-2">
+            <a className="p-2 border rounded" href={`${activityClass}/create`}>
                 Create New
+            </a>
+            <a className="p-2 border rounded" onClick={() => handleDeleteAll()}>
+                Delete All
             </a>
         </div>
     );

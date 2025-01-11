@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SingleActivity from "../components/SingleActivity";
-import type { Activity, Instructor } from "../../types";
+import type { Activity, Boat, Instructor } from "../../types";
 import MassEdits from "../components/MassEdits";
 import Select from "react-select";
 import { SingleValue } from "react-select";
@@ -10,35 +10,37 @@ interface InstructorOption {
     label: string;
 }
 
+const sortOptions = [
+    { value: "name", label: "Name" },
+    { value: "date", label: "Date" },
+    { value: "instructor", label: "Instructor" },
+    { value: "boats", label: "Boats" },
+];
+
 const Activities = () => {
     const [activities, setActivities] = useState([]);
     const [instructorsList, setInstructorsList] = useState<Instructor[]>([]);
+    const [boatsList, setBoatsList] = useState<Boat[]>([]);
     const [filteredActivities, setFilteredActivities] = useState<Activity[]>(
         []
     );
-    const [instructor, setInstructor] = useState("");
 
     useEffect(() => {
         fetch("/api/activities")
             .then((response) => response.json())
-            .then((data) => setActivities(data));
+            .then((data) => {
+                setActivities(data);
+                setFilteredActivities(data);
+            });
 
         fetch("/api/instructors")
             .then((response) => response.json())
             .then((data) => setInstructorsList(data));
-    }, []);
 
-    useEffect(() => {
-        if (instructor === "") {
-            setFilteredActivities(activities);
-        } else {
-            setFilteredActivities(
-                activities.filter(
-                    (activity: Activity) => activity.instructor === instructor
-                )
-            );
-        }
-    }, [instructor, activities]);
+        fetch("/api/boats")
+            .then((response) => response.json())
+            .then((data) => setBoatsList(data));
+    }, []);
 
     const instructorsOptions = [
         {
@@ -53,19 +55,46 @@ const Activities = () => {
     );
 
     const handleInstructorChange = (
-        newValue: SingleValue<InstructorOption>
+        instructor: SingleValue<InstructorOption>
     ) => {
-        if (newValue) {
-            setInstructor(newValue.value);
+        if (!instructor) return;
+        if (instructor.value === "") {
+            setFilteredActivities(activities);
+            return;
         }
+        setFilteredActivities(
+            activities.filter(
+                (activity: Activity) => activity.instructor === instructor.value
+            )
+        );
     };
 
-    const sortOptions = [
-        { value: "name", label: "Name" },
-        { value: "date", label: "Date" },
-        { value: "instructor", label: "Instructor" },
-        { value: "boats", label: "Boats" },
-    ];
+    const boatsOptions = [
+        {
+            value: "",
+            label: "No filter",
+        },
+    ].concat(
+        boatsList.map((boat) => ({
+            value: boat._id,
+            label: boat.name,
+        }))
+    );
+
+    const handleBoatsChange = (
+        newValue: SingleValue<{ value: string; label: string }>
+    ) => {
+        if (!newValue) return;
+        if (newValue.value == "") {
+            setFilteredActivities(activities);
+            return;
+        }
+        setFilteredActivities(
+            activities.filter((activity: Activity) =>
+                activity.boats.includes(newValue.value)
+            )
+        );
+    };
 
     const handleSortChange = (
         newValue: SingleValue<{ value: string; label: string }>
@@ -97,31 +126,47 @@ const Activities = () => {
     };
 
     return (
-        <div>
-            <h3 className="text-xl">Activities</h3>
-            <div>
-                <h4>Filters</h4>
-                <div>
-                    <p>Instructors</p>
-                    <Select
-                        className="w-72"
-                        options={instructorsOptions}
-                        onChange={handleInstructorChange}
-                    />
+        <div className="w-full">
+            <div className="flex justify-between p-8 border rounded">
+                <div className="flex flex-col justify-between">
+                    <h3 className="text-xl">Activities</h3>
+                    <MassEdits activityClass="activities" />
                 </div>
-                <div>
-                    <p>Sort by</p>
-                    <Select
-                        className="w-72"
-                        options={sortOptions}
-                        onChange={handleSortChange}
-                    />
+
+                <div className="flex flex-col space-y-4">
+                    <div className="flex flex-col space-y-4 w-96">
+                        <div className="flex items-center justify-between">
+                            <p>Instructors:</p>
+                            <Select
+                                className="w-72"
+                                options={instructorsOptions}
+                                onChange={handleInstructorChange}
+                            />
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <h4>Boats:</h4>
+                            <Select
+                                className="w-72"
+                                options={boatsOptions}
+                                onChange={handleBoatsChange}
+                            />
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <h4>Sort:</h4>
+                            <Select
+                                className="w-72"
+                                options={sortOptions}
+                                onChange={handleSortChange}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
-            <MassEdits activityClass="activities" />
-            {filteredActivities.map((activity: Activity) => (
-                <SingleActivity key={activity._id} {...activity} />
-            ))}
+            <div className="flex flex-wrap justify-between">
+                {filteredActivities.map((activity: Activity) => (
+                    <SingleActivity key={activity._id} {...activity} />
+                ))}
+            </div>
         </div>
     );
 };
