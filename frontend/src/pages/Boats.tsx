@@ -9,15 +9,15 @@ interface SortOption {
     label: string;
 }
 
+const sortOptions = [
+    { value: "name", label: "Name" },
+    { value: "model", label: "Model" },
+    { value: "manufacturer", label: "Manufacturer" },
+    { value: "capacity", label: "Capacity" },
+];
+
 const Boats = () => {
     const [boats, setBoats] = useState<Boat[]>([]);
-
-    const sortOptions = [
-        { value: "name", label: "Name" },
-        { value: "model", label: "Model" },
-        { value: "manufacturer", label: "Manufacturer" },
-        { value: "capacity", label: "Capacity" },
-    ];
 
     useEffect(() => {
         fetch("/api/boats")
@@ -50,20 +50,26 @@ const Boats = () => {
     };
 
     return (
-        <div>
-            <h3 className="text-xl">Boats</h3>
-            <div>
-                <p>Sort by</p>
-                <Select
-                    className="w-72"
-                    options={sortOptions}
-                    onChange={handleSortChange}
-                />
+        <div className="w-full">
+            <div className="flex items-start justify-between p-8 border rounded">
+                <div className="flex flex-col gap-8">
+                    <h3 className="text-xl">Boats</h3>
+                    <MassEdits activityClass="boats" />
+                </div>
+                <div className="flex items-center gap-4">
+                    <p>Sort:</p>
+                    <Select
+                        className="w-72"
+                        options={sortOptions}
+                        onChange={handleSortChange}
+                    />
+                </div>
             </div>
-            <MassEdits activityClass="boats" />
-            {boats.map((boat: Boat) => (
-                <SingleBoat key={boat._id} {...boat} />
-            ))}
+            <div className="flex flex-wrap justify-between gap-4">
+                {boats.map((boat: Boat) => (
+                    <SingleBoat key={boat._id} {...boat} />
+                ))}
+            </div>
         </div>
     );
 };

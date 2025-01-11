@@ -16,8 +16,10 @@ const Boat = () => {
 
     return (
         <div>
-            <h3 className="text-xl">Boats</h3>
-            <SingleEdits category="boats" id={params.id!} />
+            <div className="flex flex-col w-full gap-8 p-8 border rounded">
+                <h3 className="text-xl">Boat</h3>
+                <SingleEdits category="boats" id={params.id!} />
+            </div>
             {boat && <SingleBoat key={boat._id} {...boat} />}
         </div>
     );

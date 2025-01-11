@@ -4,6 +4,11 @@ import SingleInstructor from "../components/SingleInstructor";
 import MassEdits from "../components/MassEdits";
 import Select, { SingleValue } from "react-select";
 
+const sortOptions = [
+    { value: "name", label: "Name" },
+    { value: "yearsExperience", label: "Years Experience" },
+];
+
 const Instructors = () => {
     const [instructors, setInstructors] = useState<Instructor[]>([]);
 
@@ -12,11 +17,6 @@ const Instructors = () => {
             .then((response) => response.json())
             .then((data) => setInstructors(data));
     }, []);
-
-    const sortOptions = [
-        { value: "name", label: "Name" },
-        { value: "yearsExperience", label: "Years Experience" },
-    ];
 
     const handleSortChange = (filtered: SingleValue<{ value: string }>) => {
         if (!filtered) return;
@@ -37,20 +37,26 @@ const Instructors = () => {
     };
 
     return (
-        <div>
-            <h3 className="text-xl">Instructors</h3>
-            <div>
-                <p>Sort by</p>
-                <Select
-                    className="w-72"
-                    options={sortOptions}
-                    onChange={handleSortChange}
-                />
+        <div className="w-full">
+            <div className="flex items-start justify-between p-8 border rounded">
+                <div className="flex flex-col gap-8">
+                    <h3 className="text-xl">Instructors</h3>
+                    <MassEdits activityClass="instructors" />
+                </div>
+                <div className="flex items-center gap-4">
+                    <p>Sort:</p>
+                    <Select
+                        className="w-72"
+                        options={sortOptions}
+                        onChange={handleSortChange}
+                    />
+                </div>
             </div>
-            <MassEdits activityClass="instructors" />
-            {instructors.map((instructor: Instructor) => (
-                <SingleInstructor key={instructor._id} {...instructor} />
-            ))}
+            <div className="flex flex-wrap justify-between gap-4">
+                {instructors.map((instructor: Instructor) => (
+                    <SingleInstructor key={instructor._id} {...instructor} />
+                ))}
+            </div>
         </div>
     );
 };

@@ -16,8 +16,10 @@ const Instructor = () => {
 
     return (
         <div>
-            <h3 className="text-xl">Instructors</h3>
-            <SingleEdits category="instructors" id={params.id!} />
+            <div className="flex flex-col w-full gap-8 p-8 border rounded">
+                <h3 className="text-xl">Instructor</h3>
+                <SingleEdits category="instructors" id={params.id!} />
+            </div>
             {instructor && (
                 <SingleInstructor key={instructor._id} {...instructor} />
             )}
