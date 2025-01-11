@@ -162,9 +162,14 @@ const Activities = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-wrap justify-between">
+            <div className="flex flex-wrap justify-between gap-4">
                 {filteredActivities.map((activity: Activity) => (
-                    <SingleActivity key={activity._id} {...activity} />
+                    <SingleActivity
+                        key={activity._id}
+                        activity={activity}
+                        boatsList={boatsList}
+                        instructorsList={instructorsList}
+                    />
                 ))}
             </div>
         </div>
