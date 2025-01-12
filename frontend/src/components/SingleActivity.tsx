@@ -40,12 +40,9 @@ const SingleActivity = ({
                         className="px-1 border border-blue-600 rounded"
                         to={`/instructors/${instructor}`}
                     >
-                        {
-                            instructorsList.find(
-                                (instructorObj) =>
-                                    instructorObj._id === instructor
-                            )?.name
-                        }
+                        {instructorsList.find(
+                            (instructorObj) => instructorObj._id === instructor
+                        )?.name || "Instructor no longer exists"}
                     </Link>
                 </div>
                 <div className="flex flex-col gap-1">
@@ -55,11 +52,9 @@ const SingleActivity = ({
                                 className="px-1 border border-blue-600 rounded"
                                 to={`/boats/${boat}`}
                             >
-                                {
-                                    boatsList.find(
-                                        (boatObj) => boatObj._id === boat
-                                    )?.name
-                                }
+                                {boatsList.find(
+                                    (boatObj) => boatObj._id === boat
+                                )?.name || "Boat no longer exists"}
                             </Link>
                         </span>
                     ))}
