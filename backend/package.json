@@ -5,7 +5,8 @@
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon index.js",
-        "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
+        "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+        "import": "node ./json_import/importFromJson.js"
     },
     "keywords": [],
     "author": "",

@@ -1,0 +1,194 @@
+{
+    "activities": [
+        {
+            "name": "Beginner Sailing Lesson",
+            "date": "2025-01-14",
+            "instructor": 1,
+            "boats": [1, 2]
+        },
+        {
+            "name": "Advanced Racing Techniques",
+            "date": "2025-01-15",
+            "instructor": 2,
+            "boats": [3]
+        },
+        {
+            "name": "Capsize Recovery",
+            "date": "2025-01-16",
+            "instructor": 3,
+            "boats": [4, 5]
+        },
+        {
+            "name": "Navigation Basics",
+            "date": "2025-01-17",
+            "instructor": 4,
+            "boats": [6]
+        },
+        {
+            "name": "Wind and Sail Dynamics",
+            "date": "2025-01-18",
+            "instructor": 5,
+            "boats": [7, 8]
+        },
+        {
+            "name": "Group Regatta",
+            "date": "2025-01-19",
+            "instructor": 1,
+            "boats": [9, 10, 11]
+        },
+        {
+            "name": "Rescue Techniques",
+            "date": "2025-01-20",
+            "instructor": 6,
+            "boats": [12]
+        },
+        {
+            "name": "Tacking and Gybing",
+            "date": "2025-01-21",
+            "instructor": 3,
+            "boats": [13, 14]
+        },
+        {
+            "name": "Docking Practice",
+            "date": "2025-01-22",
+            "instructor": 4,
+            "boats": [15]
+        },
+        {
+            "name": "Sail Trim Techniques",
+            "date": "2025-01-23",
+            "instructor": 2,
+            "boats": [1, 3]
+        },
+        {
+            "name": "Introduction to Racing",
+            "date": "2025-01-24",
+            "instructor": 5,
+            "boats": [4, 5]
+        },
+        {
+            "name": "Night Sailing Basics",
+            "date": "2025-01-25",
+            "instructor": 6,
+            "boats": [6, 7]
+        },
+        {
+            "name": "Single-Handed Sailing",
+            "date": "2025-01-26",
+            "instructor": 1,
+            "boats": [8]
+        },
+        {
+            "name": "Intermediate Dinghy Skills",
+            "date": "2025-01-27",
+            "instructor": 3,
+            "boats": [9, 10]
+        },
+        {
+            "name": "Race Strategy and Tactics",
+            "date": "2025-01-28",
+            "instructor": 2,
+            "boats": [11, 12, 13]
+        }
+    ],
+    "boats": [
+        {
+            "name": "Sailor One",
+            "model": "RS Aero",
+            "manufacturer": "RS Sailing",
+            "capacity": 1
+        },
+        {
+            "name": "Wind Rider",
+            "model": "RS Zest",
+            "manufacturer": "RS Sailing",
+            "capacity": 2
+        },
+        {
+            "name": "Sea Glide",
+            "model": "Laser",
+            "manufacturer": "ILCA",
+            "capacity": 1
+        },
+        {
+            "name": "Wave Cutter",
+            "model": "Topper",
+            "manufacturer": "Topper International",
+            "capacity": 1
+        },
+        {
+            "name": "Ocean Breeze",
+            "model": "RS Tera",
+            "manufacturer": "RS Sailing",
+            "capacity": 1
+        },
+        {
+            "name": "Coastal Cruiser",
+            "model": "Optimist",
+            "manufacturer": "Optimist Dinghy",
+            "capacity": 1
+        },
+        {
+            "name": "Sun Chaser",
+            "model": "420",
+            "manufacturer": "Vanguard",
+            "capacity": 2
+        },
+        {
+            "name": "Sprinter",
+            "model": "RS Feva",
+            "manufacturer": "RS Sailing",
+            "capacity": 2
+        },
+        {
+            "name": "Sea Sprout",
+            "model": "Byte CII",
+            "manufacturer": "PS2000",
+            "capacity": 1
+        },
+        {
+            "name": "Gale Rider",
+            "model": "Hobie 16",
+            "manufacturer": "Hobie Cat",
+            "capacity": 4
+        },
+        {
+            "name": "Wave Rider",
+            "model": "RS Vision",
+            "manufacturer": "RS Sailing",
+            "capacity": 2
+        },
+        {
+            "name": "Storm Seeker",
+            "model": "Laser Pico",
+            "manufacturer": "LaserPerformance",
+            "capacity": 2
+        },
+        {
+            "name": "Blue Horizon",
+            "model": "RS Quest",
+            "manufacturer": "RS Sailing",
+            "capacity": 4
+        },
+        {
+            "name": "Wind Whisperer",
+            "model": "Vago",
+            "manufacturer": "LaserPerformance",
+            "capacity": 2
+        },
+        {
+            "name": "Star Tracker",
+            "model": "RS Venture",
+            "manufacturer": "RS Sailing",
+            "capacity": 5
+        }
+    ],
+    "instructors": [
+        { "name": "John Smith", "yearsExperience": 10 },
+        { "name": "Emily Johnson", "yearsExperience": 8 },
+        { "name": "Michael Brown", "yearsExperience": 12 },
+        { "name": "Sarah Davis", "yearsExperience": 6 },
+        { "name": "James Wilson", "yearsExperience": 15 },
+        { "name": "Anna Thompson", "yearsExperience": 9 }
+    ]
+}
