@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DeleteConfirmation from "./DeleteConfirmation";
+import DeleteConfirmation from "./DeleteConfirmationAll";
 
 const MassEdits = ({ activityClass }: { activityClass: string }) => {
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
