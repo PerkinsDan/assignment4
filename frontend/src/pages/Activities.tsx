@@ -127,7 +127,7 @@ const Activities = () => {
 
     return (
         <div className="w-full">
-            <div className="flex justify-between p-8 border rounded">
+            <div className="flex flex-col justify-between gap-5 p-8 border rounded md:flex-row">
                 <div className="flex flex-col justify-between">
                     <h3 className="text-xl font-bold">Activities</h3>
                     <MassEdits activityClass="activities" />
