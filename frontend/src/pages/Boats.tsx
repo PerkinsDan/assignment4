@@ -53,7 +53,7 @@ const Boats = () => {
         <div className="w-full">
             <div className="flex items-start justify-between p-8 border rounded">
                 <div className="flex flex-col gap-8">
-                    <h3 className="text-xl">Boats</h3>
+                    <h3 className="text-xl font-bold">Boats</h3>
                     <MassEdits activityClass="boats" />
                 </div>
                 <div className="flex items-center gap-4">

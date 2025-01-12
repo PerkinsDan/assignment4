@@ -5,12 +5,15 @@ const SingleEdits = ({ category, id }: { category: string; id: string }) => {
         }).then(() => window.location.reload());
     };
     return (
-        <div>
-            <button className="p-2 border" onClick={() => handleDelete()}>
+        <div className="flex gap-4">
+            <button
+                className="p-2 border rounded"
+                onClick={() => handleDelete()}
+            >
                 Delete Record
             </button>
             <button
-                className="p-2 border"
+                className="p-2 border rounded"
                 onClick={() =>
                     (window.location.href = `/${category}/${id}/edit`)
                 }

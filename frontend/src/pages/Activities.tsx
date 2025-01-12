@@ -129,7 +129,7 @@ const Activities = () => {
         <div className="w-full">
             <div className="flex justify-between p-8 border rounded">
                 <div className="flex flex-col justify-between">
-                    <h3 className="text-xl">Activities</h3>
+                    <h3 className="text-xl font-bold">Activities</h3>
                     <MassEdits activityClass="activities" />
                 </div>
 

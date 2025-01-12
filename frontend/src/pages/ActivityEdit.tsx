@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Boat, Instructor } from "../../types";
-import Select from "react-select";
+import Select, { MultiValue, SingleValue } from "react-select";
 import { useParams } from "react-router";
 
 type SelectOption = {
@@ -11,12 +11,14 @@ type SelectOption = {
 const ActivityEdit = () => {
     const params = useParams();
 
+    // form data
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [instructor, setInstructor] = useState("");
-    const [boats, setBoats] = useState<SelectOption[]>([]);
+    const [boats, setBoats] = useState<MultiValue<SelectOption>>([]);
     const [error, setError] = useState("");
 
+    // fetched data
     const [boatsList, setBoatsList] = useState<Boat[]>([]);
     const [instructorsList, setInstructorsList] = useState<Instructor[]>([]);
 
@@ -81,17 +83,18 @@ const ActivityEdit = () => {
         setError(error.message);
     };
 
-    const handleBoatsChange = (boats: SelectOption[]) => {
+    const handleBoatsChange = (boats: MultiValue<SelectOption>) => {
         setBoats(boats);
     };
 
-    const handleInstructorChange = (instructor: SelectOption) => {
+    const handleInstructorChange = (instructor: SingleValue<SelectOption>) => {
+        if (!instructor) return;
         setInstructor(instructor.value);
     };
 
     return (
-        <div>
-            <h3>Edit activity</h3>
+        <div className="flex flex-col items-center w-full gap-5 p-8 border rounded">
+            <h3 className="text-2xl">Edit activity</h3>
             <form
                 className="flex flex-col w-1/3 gap-5"
                 onSubmit={(e) => e.preventDefault()}
@@ -123,7 +126,7 @@ const ActivityEdit = () => {
                     onChange={handleBoatsChange}
                 />
                 <button
-                    className="p-3 text-white bg-blue-600 rounded"
+                    className="p-3 border border-blue-600 rounded hover:bg-blue-600 hover:text-white"
                     onClick={createActivity}
                 >
                     Edit

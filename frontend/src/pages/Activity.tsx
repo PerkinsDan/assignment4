@@ -28,7 +28,7 @@ const Activity = () => {
     return (
         <div>
             <div className="flex flex-col w-full gap-8 p-8 border rounded">
-                <h3 className="text-xl">Activity</h3>
+                <h3 className="text-xl font-bold">Activity</h3>
                 <SingleEdits category="activities" id={params.id!} />
             </div>
             {activity && (

@@ -17,7 +17,7 @@ const Instructor = () => {
     return (
         <div>
             <div className="flex flex-col w-full gap-8 p-8 border rounded">
-                <h3 className="text-xl">Instructor</h3>
+                <h3 className="text-xl font-bold">Instructor</h3>
                 <SingleEdits category="instructors" id={params.id!} />
             </div>
             {instructor && (

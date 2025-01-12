@@ -40,7 +40,7 @@ const Instructors = () => {
         <div className="w-full">
             <div className="flex items-start justify-between p-8 border rounded">
                 <div className="flex flex-col gap-8">
-                    <h3 className="text-xl">Instructors</h3>
+                    <h3 className="text-xl font-bold">Instructors</h3>
                     <MassEdits activityClass="instructors" />
                 </div>
                 <div className="flex items-center gap-4">

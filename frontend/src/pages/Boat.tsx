@@ -17,7 +17,7 @@ const Boat = () => {
     return (
         <div>
             <div className="flex flex-col w-full gap-8 p-8 border rounded">
-                <h3 className="text-xl">Boat</h3>
+                <h3 className="text-xl font-bold">Boat</h3>
                 <SingleEdits category="boats" id={params.id!} />
             </div>
             {boat && <SingleBoat key={boat._id} {...boat} />}

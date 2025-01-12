@@ -33,8 +33,8 @@ const BoatCreate = () => {
     };
 
     return (
-        <div>
-            <h3>Create a new boat</h3>
+        <div className="flex flex-col items-center w-full gap-5 p-8 border rounded">
+            <h3 className="text-2xl">Create a new boat</h3>
             <form
                 className="flex flex-col w-1/3 gap-5"
                 onSubmit={(e) => e.preventDefault()}
@@ -68,7 +68,7 @@ const BoatCreate = () => {
                     required
                 />
                 <button
-                    className="p-3 text-white bg-blue-600 rounded"
+                    className="p-3 border border-blue-600 rounded hover:bg-blue-600 hover:text-white"
                     onClick={createBoat}
                 >
                     Create
