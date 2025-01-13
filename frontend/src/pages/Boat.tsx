@@ -4,12 +4,14 @@ import SingleBoat from "../components/SingleBoat";
 import { useParams } from "react-router";
 import SingleEdits from "../components/SingleEdits";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const Boat = () => {
     const params = useParams();
     const [boat, setBoat] = useState<Boat>();
 
     useEffect(() => {
-        fetch("/api/boats/" + params.id)
+        fetch(apiEndpoint + "/api/boats/" + params.id)
             .then((response) => response.json())
             .then((data) => setBoat(data));
     }, [params]);

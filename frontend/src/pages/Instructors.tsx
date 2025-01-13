@@ -9,11 +9,13 @@ const sortOptions = [
     { value: "yearsExperience", label: "Years Experience" },
 ];
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const Instructors = () => {
     const [instructors, setInstructors] = useState<Instructor[]>([]);
 
     useEffect(() => {
-        fetch("/api/instructors")
+        fetch(apiEndpoint + "/api/instructors")
             .then((response) => response.json())
             .then((data) => setInstructors(data));
     }, []);

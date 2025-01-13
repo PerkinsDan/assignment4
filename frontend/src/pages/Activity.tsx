@@ -4,6 +4,8 @@ import SingleActivity from "../components/SingleActivity";
 import type { Activity } from "../../types";
 import SingleEdits from "../components/SingleEdits";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const Activity = () => {
     const params = useParams();
 
@@ -12,15 +14,15 @@ const Activity = () => {
     const [instructorsList, setInstructorsList] = useState([]);
 
     useEffect(() => {
-        fetch("/api/activities/" + params.id)
+        fetch(apiEndpoint + "/api/activities/" + params.id)
             .then((response) => response.json())
             .then((data) => setActivity(data));
 
-        fetch("/api/boats")
+        fetch(apiEndpoint + "/api/boats")
             .then((response) => response.json())
             .then((data) => setBoatsList(data));
 
-        fetch("/api/instructors")
+        fetch(apiEndpoint + "/api/instructors")
             .then((response) => response.json())
             .then((data) => setInstructorsList(data));
     }, [params]);

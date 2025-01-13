@@ -4,6 +4,8 @@ import { Boat } from "../../types";
 import MassEdits from "../components/MassEdits";
 import Select, { SingleValue } from "react-select";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 interface SortOption {
     value: string;
     label: string;
@@ -20,7 +22,7 @@ const Boats = () => {
     const [boats, setBoats] = useState<Boat[]>([]);
 
     useEffect(() => {
-        fetch("/api/boats")
+        fetch(apiEndpoint + "/api/boats")
             .then((response) => response.json())
             .then((data) => setBoats(data));
     }, []);

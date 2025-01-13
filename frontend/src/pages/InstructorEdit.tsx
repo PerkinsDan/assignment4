@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const InstructorEdit = () => {
     const params = useParams();
 
@@ -10,7 +12,9 @@ const InstructorEdit = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`/api/instructors/${params.id}`);
+            const response = await fetch(
+                apiEndpoint + `/api/instructors/${params.id}`
+            );
             const instructor = await response.json();
 
             return instructor;
@@ -25,16 +29,19 @@ const InstructorEdit = () => {
     const createInstructor = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
 
-        const response = await fetch(`/api/instructors/${params.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name,
-                yearsExperience,
-            }),
-        });
+        const response = await fetch(
+            apiEndpoint + `/api/instructors/${params.id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name,
+                    yearsExperience,
+                }),
+            }
+        );
 
         if (response.status === 200) {
             window.location.href = `/instructors/${params.id}`;

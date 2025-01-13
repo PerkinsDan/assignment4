@@ -4,12 +4,14 @@ import SingleInstructor from "../components/SingleInstructor";
 import { useParams } from "react-router";
 import SingleEdits from "../components/SingleEdits";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const Instructor = () => {
     const params = useParams();
     const [instructor, setInstructor] = useState<Instructor>();
 
     useEffect(() => {
-        fetch("/api/instructors/" + params.id)
+        fetch(apiEndpoint + "/api/instructors/" + params.id)
             .then((response) => response.json())
             .then((data) => setInstructor(data));
     }, [params]);

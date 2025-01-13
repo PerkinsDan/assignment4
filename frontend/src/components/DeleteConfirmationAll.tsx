@@ -1,6 +1,8 @@
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const DeleteConfirmation = ({ activityClass }: { activityClass: string }) => {
     const handleDeleteAll = () => {
-        fetch(`/api/${activityClass}`, {
+        fetch(apiEndpoint + `/api/${activityClass}`, {
             method: "DELETE",
         }).then(() => window.location.reload());
     };

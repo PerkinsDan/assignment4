@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const InstructorCreate = () => {
     const [name, setName] = useState("");
     const [yearsExperience, setYearsExperience] = useState<number>();
@@ -8,7 +10,7 @@ const InstructorCreate = () => {
     const createInstructor = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
 
-        const response = await fetch(`/api/instructors`, {
+        const response = await fetch(apiEndpoint + `/api/instructors`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

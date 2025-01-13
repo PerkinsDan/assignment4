@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const BoatEdit = () => {
     const params = useParams();
 
@@ -12,7 +14,9 @@ const BoatEdit = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`/api/boats/${params.id}`);
+            const response = await fetch(
+                apiEndpoint + `/api/boats/${params.id}`
+            );
             const boat = await response.json();
 
             return boat;
@@ -29,7 +33,7 @@ const BoatEdit = () => {
     const createBoat = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
 
-        const response = await fetch(`/api/boats/${params.id}`, {
+        const response = await fetch(apiEndpoint + `/api/boats/${params.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -3,6 +3,8 @@ import { AgGridReact } from "ag-grid-react";
 import { AllCommunityModule, ModuleRegistry, ColDef } from "ag-grid-community";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
+const apiEnpoint = import.meta.env.VITE_API_ENDPOINT;
+
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 type pieProps = {
@@ -69,7 +71,7 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/api/stats");
+                const response = await fetch(apiEnpoint + "/api/stats");
                 return await response.json();
             } catch (error) {
                 console.error(error);

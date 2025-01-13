@@ -5,6 +5,8 @@ import MassEdits from "../components/MassEdits";
 import Select from "react-select";
 import { SingleValue } from "react-select";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 interface InstructorOption {
     value: string;
     label: string;
@@ -26,18 +28,18 @@ const Activities = () => {
     );
 
     useEffect(() => {
-        fetch("/api/activities")
+        fetch(apiEndpoint + "/api/activities")
             .then((response) => response.json())
             .then((data) => {
                 setActivities(data);
                 setFilteredActivities(data);
             });
 
-        fetch("/api/instructors")
+        fetch(apiEndpoint + "/api/instructors")
             .then((response) => response.json())
             .then((data) => setInstructorsList(data));
 
-        fetch("/api/boats")
+        fetch(apiEndpoint + "/api/boats")
             .then((response) => response.json())
             .then((data) => setBoatsList(data));
     }, []);

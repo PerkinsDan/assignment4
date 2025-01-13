@@ -7,6 +7,8 @@ type SelectOption = {
     label: string;
 };
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const ActivityCreate = () => {
     // form data
     const [name, setName] = useState("");
@@ -21,10 +23,12 @@ const ActivityCreate = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const boatsResponse = await fetch("/api/boats");
+            const boatsResponse = await fetch(apiEndpoint + "/api/boats");
             const boatsList = await boatsResponse.json();
 
-            const instructorsResponse = await fetch("/api/instructors");
+            const instructorsResponse = await fetch(
+                apiEndpoint + "/api/instructors"
+            );
             const instructorsList = await instructorsResponse.json();
 
             return { boatsList, instructorsList };
@@ -49,7 +53,7 @@ const ActivityCreate = () => {
     const createActivity = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
 
-        const response = await fetch("/api/activities", {
+        const response = await fetch(apiEndpoint + "/api/activities", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

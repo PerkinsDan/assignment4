@@ -1,3 +1,5 @@
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const DeleteConfirmation = ({
     category,
     id,
@@ -6,7 +8,7 @@ const DeleteConfirmation = ({
     id: string;
 }) => {
     const handleDelete = () => {
-        fetch(`/api/${category}/${id}`, {
+        fetch(apiEndpoint + `/api/${category}/${id}`, {
             method: "DELETE",
         }).then(() => (window.location.href = `/${category}`));
     };

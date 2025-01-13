@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const BoatCreate = () => {
     const [name, setName] = useState("");
     const [model, setModel] = useState("");
@@ -10,7 +12,7 @@ const BoatCreate = () => {
     const createBoat = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
 
-        const response = await fetch("/api/boats", {
+        const response = await fetch(apiEndpoint + "/api/boats", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

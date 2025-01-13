@@ -8,6 +8,8 @@ type SelectOption = {
     label: string;
 };
 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
 const ActivityEdit = () => {
     const params = useParams();
 
@@ -24,14 +26,16 @@ const ActivityEdit = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const boatsResponse = await fetch("/api/boats");
+            const boatsResponse = await fetch(apiEndpoint + "/api/boats");
             const boatsList = await boatsResponse.json();
 
-            const instructorsResponse = await fetch("/api/instructors");
+            const instructorsResponse = await fetch(
+                apiEndpoint + "/api/instructors"
+            );
             const instructorsList = await instructorsResponse.json();
 
             const activityResponse = await fetch(
-                "/api/activities/" + params.id
+                apiEndpoint + "/api/activities/" + params.id
             );
             const activity = await activityResponse.json();
 
@@ -61,18 +65,21 @@ const ActivityEdit = () => {
     const createActivity = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
 
-        const response = await fetch(`/api/activities/${params.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name,
-                date,
-                instructor,
-                boats: boats.map((boat) => boat.value),
-            }),
-        });
+        const response = await fetch(
+            apiEndpoint + `/api/activities/${params.id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name,
+                    date,
+                    instructor,
+                    boats: boats.map((boat) => boat.value),
+                }),
+            }
+        );
 
         if (response.status === 200) {
             window.location.href = `/activities/${params.id}`;
